@@ -1,4 +1,28 @@
+## Description
+
+Boilerplate for simple `auth` with `firebase` using `Context.Provider`. Routing is set with `react-router-dom` and will have protected and public routes based open the authentication status.
+
+Packages used:
+
+-   firebase;
+-   react-router-dom;
+
+Testing:
+
+-   enzyme;
+-   enzyme-adapter-react-16
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Instructions
+
+1. Create a new firebase project;
+
+2. In the `Authentication` -> `Sign-in method` enable the provider you want to use. For this project I used google but you can enable other as well. Just don't forget to update `firebase.js` with the new provider.
+
+3. Go into your project and replace the content of the `firebase.js.dist` with your own firebase configuration and rename the file to `firebase.js`
+
+4. `npm install` and go!
 
 ## Available Scripts
 

@@ -1,26 +1,50 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+// context
+import Auth from './core';
+
+// local components
+import { LogIn } from './layouts/LogIn/LogIn';
+import { Home } from './layouts/Home/Home';
+import { Blog } from './layouts/Blog/Blog';
+import { Contact } from './layouts/Contact/Contact';
+import { ProtectedRoute } from './layouts/ProtectedRoute/ProtectedRoute';
+
+class App extends React.Component {
+	render() {
+		return (
+			<Auth.Provider>
+				<BrowserRouter>
+					<Switch>
+						<Route exact path='/log-in' component={LogIn} />
+
+						<ProtectedRoute
+							exact
+							path='/app/home'
+							component={Home}
+						/>
+						<ProtectedRoute
+							exact
+							path='/app/blog'
+							component={Blog}
+						/>
+						<ProtectedRoute
+							exact
+							path='/app/contact'
+							component={Contact}
+						/>
+
+						<Route
+							component={() => {
+								return <Redirect to='/log-in' />;
+							}}
+						/>
+					</Switch>
+				</BrowserRouter>
+			</Auth.Provider>
+		);
+	}
 }
 
 export default App;
