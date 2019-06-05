@@ -12,24 +12,24 @@ const Header = props => {
 		<Auth.Consumer>
 			{context => {
 				return (
-					<header className='Header'>
+					<header className="Header">
 						<ul>
 							<li>
-								<Link to='/app/home'>Home</Link>
+								<Link to="/app/home">Home</Link>
 							</li>
 							<li>
-								<Link to='/app/blog'>Blog</Link>
+								<Link to="/app/blog">Blog</Link>
 							</li>
 							<li>
-								<Link to='/app/contact'>Contact</Link>
+								<Link to="/app/contact">Contact</Link>
 							</li>
 						</ul>
-						<div className='Header__user'>
+						<div className="Header__user">
 							<p>
 								Hello <b>{context.user.displayName}</b>
 							</p>
 							<button
-								className='btn btn-secondary'
+								className="btn btn-secondary"
 								onClick={() => {
 									context.logOut().then(() => {
 										props.history.push('/log-in');

@@ -8,7 +8,7 @@ export const ProtectedRoute = ({ component: Component, ...rest }) => {
 		return (
 			<>
 				<Header />
-				<div className='container'>
+				<div className="container">
 					<Component {...props} />
 				</div>
 			</>
@@ -21,8 +21,8 @@ export const ProtectedRoute = ({ component: Component, ...rest }) => {
 				to={{
 					pathName: '/',
 					state: {
-						from: props.location
-					}
+						from: props.location,
+					},
 				}}
 			/>
 		);

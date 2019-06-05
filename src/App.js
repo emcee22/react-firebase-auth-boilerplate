@@ -17,27 +17,15 @@ class App extends React.Component {
 			<Auth.Provider>
 				<BrowserRouter>
 					<Switch>
-						<Route exact path='/log-in' component={LogIn} />
+						<Route exact path="/log-in" component={LogIn} />
 
-						<ProtectedRoute
-							exact
-							path='/app/home'
-							component={Home}
-						/>
-						<ProtectedRoute
-							exact
-							path='/app/blog'
-							component={Blog}
-						/>
-						<ProtectedRoute
-							exact
-							path='/app/contact'
-							component={Contact}
-						/>
+						<ProtectedRoute exact path="/app/home" component={Home} />
+						<ProtectedRoute exact path="/app/blog" component={Blog} />
+						<ProtectedRoute exact path="/app/contact" component={Contact} />
 
 						<Route
 							component={() => {
-								return <Redirect to='/log-in' />;
+								return <Redirect to="/log-in" />;
 							}}
 						/>
 					</Switch>

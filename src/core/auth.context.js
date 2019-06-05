@@ -9,7 +9,7 @@ class AuthProvider extends Component {
 		super(props);
 		this.state = {
 			user: null,
-			authenticated: false
+			authenticated: false,
 		};
 	}
 
@@ -20,12 +20,12 @@ class AuthProvider extends Component {
 				if (user) {
 					this.setState({
 						authenticated: true,
-						user
+						user,
 					});
 				} else {
 					this.setState({
 						authenticated: false,
-						user: null
+						user: null,
 					});
 				}
 			}
@@ -38,24 +38,14 @@ class AuthProvider extends Component {
 	}
 
 	logIn = () => {
-		return firebaseAppAuth
-			.signInWithPopup(providers.googleProvider)
-			.catch(error => {
-				throw new Error(
-					`We can't sign you in! Reason -> ${
-						error.message
-					}, Code -> ${error.code}`
-				);
-			});
+		return firebaseAppAuth.signInWithPopup(providers.googleProvider).catch(error => {
+			throw new Error(`We can't sign you in! Reason -> ${error.message}, Code -> ${error.code}`);
+		});
 	};
 
 	logOut = () => {
 		return firebaseAppAuth.signOut().catch(error => {
-			throw new Error(
-				`We can't end your session!  Reason -> ${
-					error.message
-				}, Code -> ${error.code}`
-			);
+			throw new Error(`We can't end your session!  Reason -> ${error.message}, Code -> ${error.code}`);
 		});
 	};
 
@@ -65,7 +55,7 @@ class AuthProvider extends Component {
 				value={{
 					...this.state,
 					logIn: this.logIn,
-					logOut: this.logOut
+					logOut: this.logOut,
 				}}
 			>
 				{this.props.children}
